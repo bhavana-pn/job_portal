@@ -4,6 +4,15 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    //mongoose constraint for email
+    unique: true,
+    //mongoose constraint for email validation
+    // validate: {
+    //   validator: function (v) {
+    //     return /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(v);
+    //   },
+    //   message: (props) => `${props.value} is not a valid email!`,
+    // },
   },
   password: {
     type: String,
