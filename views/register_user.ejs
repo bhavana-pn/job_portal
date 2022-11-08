@@ -48,14 +48,14 @@ alert("Fill in with correct information");
     <nav class="navbar" id="insidenav">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../index.php">Job Portal</a>
+                <a class="navbar-brand" href="/">Job Portal</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Jobseeker Registraation</a></li>
+                <li class="active"><a href="/register_user">Jobseeker Registraation</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="../login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
@@ -72,8 +72,8 @@ alert("Fill in with correct information");
                 </p>
             </div>
 
-            <FORM id="reguser" onsubmit="return checkForm()" METHOD="post" ACTION="process_user.php"
-                enctype="multipart/form-data" class="form-horizontal">
+            <FORM id="reguser" METHOD="post" ACTION="/sub" enctype="multipart/form-data"
+                class="form-horizontal">
                 <h3 class="h3style"> Your Login Detials </h3>
 
 
@@ -81,7 +81,7 @@ alert("Fill in with correct information");
                     <label class="control-label col-sm-2" for="email">Enter your Email ID:</label>
                     <div class="col-sm-4">
                         <input type="email" name="useremail" placeholder="Your E-mail" class="form-control" id="email"
-                            required onblur="validate('email','emailerror',this.value)">
+                            required>
                     </div>
                     <label id="emailerror" class="error"></label>
                 </div>
@@ -89,7 +89,7 @@ alert("Fill in with correct information");
                 <div class="form-group">
                     <label class="control-label col-sm-2 " for="passnew"> Create new Password:</label>
                     <div class="col-sm-4"> <input type="password" id="passnew" placeholder="New Password" name="pass1"
-                            class="form-control" required onblur="validate('password','passerror',this.value)">
+                            class="form-control" required>
                     </div>
                     <label id="passerror" class="error"></label>
                 </div>
@@ -109,8 +109,7 @@ alert("Fill in with correct information");
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="name">Mention your Full Name:</label>
                     <div class="col-sm-4">
-                        <input type="text" id="name" placeholder="Your Name" name="uname" class="form-control" required
-                            onblur="validate('username','nameerror',this.value)">
+                        <input type="text" id="name" placeholder="Your Name" name="uname" class="form-control" required>
                     </div>
                     <label id="nameerror" class="error"></label>
                 </div>
@@ -135,8 +134,7 @@ alert("Fill in with correct information");
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="nation">Country:</label>
                     <div class="col-sm-4">
-                        <input type="text" name="nation" placeholder="Country" class="form-control" id="nation" required
-                            onblur="validate('email','emailerror',this.value)">
+                        <input type="text" name="nation" placeholder="Country" class="form-control" id="nation" required>
                     </div>
                     <label id="emailerror" class="error"></label>
                 </div>
@@ -144,7 +142,7 @@ alert("Fill in with correct information");
                 <div class="form-group">
                     <label class="control-label col-sm-3 " for="state"> State:</label>
                     <div class="col-sm-4"> <input type="text" id="state" placeholder="State" name="state"
-                            class="form-control" required onblur="validate('password','passerror',this.value)">
+                            class="form-control" required >
                     </div>
                     <label id="passerror" class="error"></label>
                 </div>
@@ -153,7 +151,7 @@ alert("Fill in with correct information");
                     <label class="control-label col-sm-3" for="pin">Pin Code:</label>
                     <div class="col-sm-4">
                         <input type="password" id="pin" placeholder="Pin Code" name="pin" class="pin" required
-                            onblur="validate('password','passerror',this.value)">
+                            >
                     </div>
                     <label class="error" id="passerror2"></label>
                 </div>
@@ -163,7 +161,7 @@ alert("Fill in with correct information");
                     <label class="control-label col-sm-3" for="mobno">Enter your Mobile number:</label>
                     <div class="col-sm-3"><input type="text" name="mobno" placeholder=" Mobile number"
                             class="form-control" id="mobno" required
-                            onblur="validate('mobilenum','mobnoerror',this.value)">
+                            >
                     </div>
                     <label id="mobnoerror" class="error"></label>
                 </div>
@@ -194,7 +192,7 @@ alert("Fill in with correct information");
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="skills"> What are your Key Skills:</label>
                     <div class="col-sm-4"><input type="text" name="skills" placeholder="skills" class="form-control"
-                            name="skills" id="skills" required onblur="validate('text','skillerror',this.value)">
+                            name="skills" id="skills" required >
                     </div>
                     <label id="skillerror" class="error"></label>
                 </div>
@@ -206,8 +204,7 @@ alert("Fill in with correct information");
 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="ugcourse"> Your Basic Education: </label>
-                    <div class="col-sm-4">
-                        <select name="ugcourse" id="ugcourse" class=" form-control" required>
+                    <div class="col-sm-4"> <select name="ugcourse" id="ugcourse" class=" form-control" required>
                             <option value="" label="Select">Select</option>
                             <option value="Not Pursuing Graduation"> Not Pursuing Graduation</option>
                             <option value="B.A">B.A</option>
