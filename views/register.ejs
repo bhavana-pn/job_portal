@@ -71,14 +71,16 @@
                 </p>
             </div>
         </div>
-        <form role="form" id="regcomp" onsubmit="return checkForm()" class="form-horizontal" method="post" action="">
+        <form role="form" id="regcomp" onsubmit="return checkForm()" class="form-horizontal" method="post"
+            action="/emp">
             <h3 class="h3style"> Your Login details </h3>
             <div class="page-header"> </div>
 
             <div class="form-group">
                 <label for="email" class="control-label col-sm-2">E-mail:</label>
                 <div class="col-sm-4">
-                    <input type="email" required placeholder="Enter your email" class="form-control" name="email" id="email" onblur="validate('email','emailerror',this.value)">
+                    <input type="email" required placeholder="Enter your email" class="form-control" name="email"
+                        id="email" onblur="validate('email','emailerror',this.value)">
                 </div>
                 <label class="error" id="emailerror"></label>
             </div>
@@ -86,7 +88,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="pass1">Password:</label>
                 <div class="col-sm-4">
-                    <input type="password" placeholder="Enter your password" name="pass1" id="pass1" class="form-control" required onblur="validate('password','pass1error',this.value)">
+                    <input type="password" placeholder="Enter your password" name="pass1" id="pass1"
+                        class="form-control" required onblur="validate('password','pass1error',this.value)">
                 </div>
                 <label class="error" id="pass1error"></label>
             </div>
@@ -134,9 +137,11 @@
                         <option value="Accounting/Consulting/Taxation">Accounting/Consulting/Taxation</option>
                         <option value="Advertising/Event Management/PR">Advertising/Event Management/PR</option>
                         <option value="Agriculture/Dairy Technology">Agriculture/Dairy Technology</option>
-                        <option value="Airlines/Hotel/Hospitality/Travel/Tourism/Restaurants">Airlines/Hotel/Hospitality/Travel/Tourism/Restaurants</option>
+                        <option value="Airlines/Hotel/Hospitality/Travel/Tourism/Restaurants">
+                            Airlines/Hotel/Hospitality/Travel/Tourism/Restaurants</option>
                         <option value="Animation / Gaming">Animation / Gaming</option>
-                        <option value="Architectural Services/ Interior Designing">Architectural Services/ Interior Designing</option>
+                        <option value="Architectural Services/ Interior Designing">Architectural Services/ Interior
+                            Designing</option>
                         <option value="Auto Ancillary/Automobiles/Components">Auto Ancillary/Automobiles/Components
                         </option>
                     </select>
@@ -146,7 +151,8 @@
 
             <div class="form-group">
                 <label for="addr" class="control-label col-sm-2">Address:</label>
-                <div class="col-sm-5"><textarea id="addr" rows="5" name="addr" class="form-control" required onblur="validate('address','addrerror',this.value)"></textarea>
+                <div class="col-sm-5"><textarea id="addr" rows="5" name="addr" class="form-control" required
+                        onblur="validate('address','addrerror',this.value)"></textarea>
                 </div>
                 <label class="error" id="addrerror"></label>
             </div>
@@ -154,7 +160,8 @@
             <div class="form-group">
                 <label for="pincode" class="control-label col-sm-2">Pincode:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="Enter the pincode" name="pin_code" id="pincode" required onblur="validate('pincode','pinerror',this.value)">
+                    <input type="text" class="form-control" placeholder="Enter the pincode" name="pin_code" id="pincode"
+                        required onblur="validate('pincode','pinerror',this.value)">
                 </div>
                 <label class="error" id="pinerror"></label>
             </div>
@@ -162,7 +169,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="person">Contact Person:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="Enter Executive Name" id="person" name="person" required onblur="validate('username','personerror',this.value)">
+                    <input type="text" class="form-control" placeholder="Enter Executive Name" id="person" name="person"
+                        required onblur="validate('username','personerror',this.value)">
                     <label class="error" id="personerror"></label>
                 </div>
             </div>
@@ -170,7 +178,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="phone">Contact Number:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="Enter Contact Number" id="phone" name="phone" required onblur="validate('mobilenum','pherror',this.value)">
+                    <input type="text" class="form-control" placeholder="Enter Contact Number" id="phone" name="phone"
+                        required onblur="validate('mobilenum','pherror',this.value)">
                     <label class="error" id="pherror"></label>
                 </div>
             </div>
@@ -194,7 +203,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">About Company:</label>
                 <div class="col-sm-5">
-                    <textarea placeholder="Describe your company" class="form-control" rows="5" required onblur="validate('longtext','abouterror',this.value)"></textarea>
+                    <textarea placeholder="Describe your company" name="about" class="form-control" rows="5" required
+                        onblur="validate('longtext','abouterror',this.value)"></textarea>
                     <label class="error" id="abouterror"></label>
                 </div>
             </div>
