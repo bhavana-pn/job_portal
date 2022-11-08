@@ -48,6 +48,12 @@ app.post("/sub", async function (req, res) {
     basic: req.body.ugcourse,
     master: req.body.pgcourse,
   })
+  try {
+    await user.save()
+    res.redirect("login")
+  } catch (err) {
+    res.redirect("register_user")
+  }
 })
 
 app.listen(3000, function () {
