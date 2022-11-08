@@ -71,8 +71,7 @@
                 </p>
             </div>
         </div>
-        <form role="form" id="regcomp" onsubmit="return checkForm()" class="form-horizontal" method="post"
-            action="/emp">
+        <form role="form" id="regcomp" class="form-horizontal" method="post" action="/emp">
             <h3 class="h3style"> Your Login details </h3>
             <div class="page-header"> </div>
 
@@ -80,18 +79,16 @@
                 <label for="email" class="control-label col-sm-2">E-mail:</label>
                 <div class="col-sm-4">
                     <input type="email" required placeholder="Enter your email" class="form-control" name="email"
-                        id="email" onblur="validate('email','emailerror',this.value)">
+                        id="email">
                 </div>
-                <label class="error" id="emailerror"></label>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-sm-2" for="pass1">Password:</label>
                 <div class="col-sm-4">
                     <input type="password" placeholder="Enter your password" name="pass1" id="pass1"
-                        class="form-control" required onblur="validate('password','pass1error',this.value)">
+                        class="form-control" required>
                 </div>
-                <label class="error" id="pass1error"></label>
             </div>
 
             <div class="form-group">
@@ -100,7 +97,6 @@
                     <input type="password" placeholder="Confirm your password" name="pass2" id="pass2"
                         class="form-control" required>
                 </div>
-                <label class="error" id="pass2error"></label>
             </div>
 
             <div class="page-header"></div>
@@ -111,9 +107,8 @@
                 <label class="control-label col-sm-2"> Company Name:</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="compname" id="compname"
-                        placeholder="Enter Company Name" required onblur="validate('company','comperror',this.value)">
+                        placeholder="Enter Company Name" required>
                 </div>
-                <label class="error" id="comperror"></label>
             </div>
 
 
@@ -125,7 +120,6 @@
                     <label class="radio-inline"><input type="radio" name="comtype" id="type2"
                             value="Consultant">Consultant</label>
                 </div>
-                <label class="error" id="typeerror"></label>
             </div>
 
             <div class="form-group">
@@ -146,7 +140,6 @@
                         </option>
                     </select>
                 </div>
-                <label class="error" id="inderror"></label>
             </div>
 
             <div class="form-group">
@@ -161,17 +154,15 @@
                 <label for="pincode" class="control-label col-sm-2">Pincode:</label>
                 <div class="col-sm-4">
                     <input type="text" class="form-control" placeholder="Enter the pincode" name="pin_code" id="pincode"
-                        required onblur="validate('pincode','pinerror',this.value)">
+                        required>
                 </div>
-                <label class="error" id="pinerror"></label>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-sm-2" for="person">Contact Person:</label>
                 <div class="col-sm-4">
                     <input type="text" class="form-control" placeholder="Enter Executive Name" id="person" name="person"
-                        required onblur="validate('username','personerror',this.value)">
-                    <label class="error" id="personerror"></label>
+                        required>
                 </div>
             </div>
 
@@ -179,8 +170,7 @@
                 <label class="control-label col-sm-2" for="phone">Contact Number:</label>
                 <div class="col-sm-4">
                     <input type="text" class="form-control" placeholder="Enter Contact Number" id="phone" name="phone"
-                        required onblur="validate('mobilenum','pherror',this.value)">
-                    <label class="error" id="pherror"></label>
+                        required>
                 </div>
             </div>
 
@@ -203,9 +193,8 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">About Company:</label>
                 <div class="col-sm-5">
-                    <textarea placeholder="Describe your company" name="about" class="form-control" rows="5" required
-                        onblur="validate('longtext','abouterror',this.value)"></textarea>
-                    <label class="error" id="abouterror"></label>
+                    <textarea placeholder="Describe your company" name="about" class="form-control" rows="5"
+                        required></textarea>
                 </div>
             </div>
             <div class="page-header"> </div>
