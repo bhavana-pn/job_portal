@@ -1,3 +1,4 @@
+const md5 = require('md5');
 const User = require('./model/User');
 const Company = require("./model/Company");
 
@@ -23,7 +24,7 @@ app.get("/login", function (req, res) {
 });
 
 app.get("/register_user", function (req, res) {
-  res.render("register_user");
+  res.render("register_user", { user: new User(), error: "" });
 });
 
 app.get("/register", function (req, res) {
@@ -38,7 +39,7 @@ app.post("/sub", function (req, res) {
   console.log(req.body);
   const user = new User({
     email: req.body.useremail,
-    password: req.body.pass1,
+    password: md5(req.body.pass1),
     name: req.body.uname,
     country: req.body.nation,
     state: req.body.state,
@@ -59,33 +60,36 @@ app.post("/sub", function (req, res) {
   //   res.redirect("register_user")
   // }
   user.save((err, newUser) => {
-        if (err) {
-            res.render('register_user', {
-                user: user,
-                errorMessage: 'error ereating author'
-            })
-            console.log("Error " + err)
-        }
-        else {
-            res.redirect('login')
-        }
-    })
+    if (err) {
+      res.render('register_user', {
+        user: user,
+        error: err,
+      })
+      console.log("Error " + err)
+    }
+    else {
+      res.redirect('login')
+    }
+  })
 });
 
 app.post("/emp", async function (req, res) {
-  const user = new Company({
-    email: req.body.email,
-    password: req.body.pass1,
-    compname: req.body.pass2,
-    company: req.body.compname,
-    type: req.body.comtype,
-    industry: req.body.indtype.value,
-    address: req.body.addr,
-    pincode: req.body.pin_code,
-    name: req.body.person,
-    mobile: req.body.phone,
-    about: req.body.about,
-  });
+  if (req.body.pass1 === req.body.pass2) {
+    const user = new Company({
+      email: req.body.email,
+      password: md5(req.body.pass1),
+      // compname: req.body.pass2,
+      company: req.body.compname,
+      type: req.body.comtype,
+      industry: req.body.indtype.value,
+      address: req.body.addr,
+      pincode: req.body.pin_code,
+      name: req.body.person,
+      mobile: req.body.phone,
+      about: req.body.about,
+    });
+  }
+  res.redirect("register_user");
 });
 
 app.listen(3000, function () {
