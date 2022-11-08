@@ -1,5 +1,4 @@
-//jshint esversion:6
-const User = require("./model/User");
+const User = require('./model/User');
 const Company = require("./model/Company");
 
 if (process.env.NODE_ENV !== "production") {
@@ -35,7 +34,8 @@ app.get("/forgot_pass", function (req, res) {
   res.render("forgot_pass");
 });
 
-app.post("/sub", async function (req, res) {
+app.post("/sub", function (req, res) {
+  console.log(req.body);
   const user = new User({
     email: req.body.useremail,
     password: req.body.pass1,
@@ -44,17 +44,32 @@ app.post("/sub", async function (req, res) {
     state: req.body.state,
     pincode: req.body.pin,
     mobile: req.body.mobno,
-    experience: req.body.experience.value,
-    skills: req.body.pass2,
-    basic: req.body.ugcourse.value,
-    master: req.body.pgcourse.value,
+    // experience: req.body.experience,
+    // skills: req.body.pass2,
+    // basic: req.body.ugcourse,
+    // master: req.body.pgcourse,
   });
-  try {
-    await user.save()
-    res.redirect("login")
-  } catch (err) {
-    res.redirect("register_user")
-  }
+  // try {
+  //   console.log("Inside Try Block")
+  //   const newUser = await user.save()
+  //   console.log("Try Block")
+  //   res.redirect("login")
+  // } catch (err) {
+  //   console.log("Catch block")
+  //   res.redirect("register_user")
+  // }
+  user.save((err, newUser) => {
+        if (err) {
+            res.render('register_user', {
+                user: user,
+                errorMessage: 'error ereating author'
+            })
+            console.log("Error " + err)
+        }
+        else {
+            res.redirect('login')
+        }
+    })
 });
 
 app.post("/emp", async function (req, res) {
