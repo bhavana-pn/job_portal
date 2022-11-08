@@ -1,5 +1,6 @@
 //jshint esversion:6
 const User = require("./model/User");
+const Company = require("./model/Company");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -34,7 +35,7 @@ app.get("/forgot_pass", function (req, res) {
   res.render("forgot_pass");
 });
 
-app.post("/sub", function (req, res) {
+app.post("/sub", async function (req, res) {
   const user = new User({
     email: req.body.useremail,
     password: req.body.pass1,
@@ -43,10 +44,26 @@ app.post("/sub", function (req, res) {
     state: req.body.state,
     pincode: req.body.pin,
     mobile: req.body.mobno,
-    experience: req.body.experience,
+    experience: req.body.experience.value,
     skills: req.body.pass2,
-    basic: req.body.ugcourse,
-    master: req.body.pgcourse,
+    basic: req.body.ugcourse.value,
+    master: req.body.pgcourse.value,
+  });
+});
+
+app.post("/emp", async function (req, res) {
+  const user = new Company({
+    email: req.body.email,
+    password: req.body.pass1,
+    compname: req.body.pass2,
+    company: req.body.compname,
+    type: req.body.comtype,
+    industry: req.body.indtype.value,
+    address: req.body.addr,
+    pincode: req.body.pin_code,
+    name: req.body.person,
+    mobile: req.body.phone,
+    about: req.body.about,
   });
 });
 
