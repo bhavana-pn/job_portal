@@ -44,27 +44,27 @@ app.post("/sub", async function (req, res) {
     state: req.body.state,
     pincode: req.body.pin,
     mobile: req.body.mobno,
-    experience: req.body.experience.value,
+    experience: req.body.experience,
     skills: req.body.pass2,
-    basic: req.body.ugcourse.value,
-    master: req.body.pgcourse.value,
+    basic: req.body.ugcourse,
+    master: req.body.pgcourse,
   });
   try {
-    await user.save()
-    res.redirect("login")
+    await user.save();
+    res.redirect("login");
   } catch (err) {
-    res.redirect("register_user")
+    res.redirect("register_user");
   }
 });
 
 app.post("/emp", async function (req, res) {
-  const user = new Company({
+  const company = new Company({
     email: req.body.email,
     password: req.body.pass1,
     compname: req.body.pass2,
     company: req.body.compname,
     type: req.body.comtype,
-    industry: req.body.indtype.value,
+    industry: req.body.indtype,
     address: req.body.addr,
     pincode: req.body.pin_code,
     name: req.body.person,
