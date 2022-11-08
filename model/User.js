@@ -40,19 +40,19 @@ const userSchema = new mongoose.Schema({
   },
   experience: {
     type: String,
-    required: true,
+    // required: true,
   },
   skills: {
     type: String,
-    required: true,
+    // required: true,
   },
   basic: {
     type: String,
-    required: true,
+    // required: true,
   },
   master: {
     type: String,
-    required: true,
+    // required: true,
   },
 });
 
