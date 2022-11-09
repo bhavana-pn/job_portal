@@ -24,7 +24,7 @@ app.get("/login", function (req, res) {
 });
 
 app.get("/register_user", function (req, res) {
-  res.render("register_user", { user: new User(), error: "" });
+  res.render("register_user", { field: "", error: "" });
 });
 
 app.get("/register", function (req, res) {
@@ -44,7 +44,7 @@ app.post("/sub", function (req, res) {
     if (!err) {
       res.render("register_user", {
         field: "email",
-        error: "Email already exists",
+        error: "Email already exists, try logging in 😄",
       });
     }
   });
@@ -85,7 +85,7 @@ app.post("/sub", function (req, res) {
   } else {
     res.render("register_user", {
       field: "password",
-      error: "Password not matched",
+      error: "Password does not match",
     });
   }
 });
@@ -95,7 +95,7 @@ app.post("/emp", function (req, res) {
     if (!err) {
       res.render("register", {
         field: "email",
-        error: "Email already exists",
+        error: "Email already exists, try logging in 😄",
       });
     }
   });
@@ -113,7 +113,7 @@ app.post("/emp", function (req, res) {
       mobile: req.body.phone,
       about: req.body.about,
     });
-    user.save((err, newUser) => {
+    company.save((err, newUser) => {
       if (err) {
         res.render("register", {
           error: err,
@@ -126,7 +126,7 @@ app.post("/emp", function (req, res) {
   } else {
     res.render("register", {
       field: "password",
-      error: "Password not matched",
+      error: "Password does not match",
     });
   }
 });
