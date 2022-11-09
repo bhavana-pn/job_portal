@@ -24,7 +24,7 @@ app.get("/login", function (req, res) {
 });
 
 app.get("/register_user", function (req, res) {
-  res.render("register_user", { user: new User(), error: "" });
+  res.render("register_user", { field:"" , error: "" });
 });
 
 app.get("/register", function (req, res) {
@@ -36,41 +36,52 @@ app.get("/forgot_pass", function (req, res) {
 });
 
 app.post("/sub", function (req, res) {
-  console.log(req.body);
-  const user = new User({
-    email: req.body.useremail,
-    password: md5(req.body.pass1),
-    name: req.body.uname,
-    country: req.body.nation,
-    state: req.body.state,
-    pincode: req.body.pin,
-    mobile: req.body.mobno,
-    // experience: req.body.experience,
-    // skills: req.body.pass2,
-    // basic: req.body.ugcourse,
-    // master: req.body.pgcourse,
+  //find user whose email is req.body.email from database
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (!err) {
+      res.render("register_user", { field: "email", error: "Email already exists, try logging in 😄" });
+    }
   });
-  // try {
-  //   console.log("Inside Try Block")
-  //   const newUser = await user.save()
-  //   console.log("Try Block")
-  //   res.redirect("login")
-  // } catch (err) {
-  //   console.log("Catch block")
-  //   res.redirect("register_user")
-  // }
-  user.save((err, newUser) => {
-    if (err) {
-      res.render('register_user', {
-        user: user,
-        error: err,
-      })
-      console.log("Error " + err)
-    }
-    else {
-      res.redirect('login')
-    }
-  })
+    
+
+  if (req.body.pass1 == req.body.pass2) {
+    const user = new User({
+      email: req.body.useremail,
+      password: md5(req.body.pass1),
+      name: req.body.uname,
+      country: req.body.nation,
+      state: req.body.state,
+      pincode: req.body.pin,
+      mobile: req.body.mobno,
+      experience: req.body.experience,
+      skills: req.body.pass2,
+      basic: req.body.ugcourse,
+      master: req.body.pgcourse,
+    });
+    // try {
+    //   console.log("Inside Try Block")
+    //   const newUser = await user.save()
+    //   console.log("Try Block")
+    //   res.redirect("login")
+    // } catch (err) {
+    //   console.log("Catch block")
+    //   res.redirect("register_user")
+    // }
+    user.save((err, newUser) => {
+      if (err) {
+        res.render('register_user', {
+          error: err,
+        })
+        console.log("Error " + err)
+      }
+      else {
+        res.redirect('login')
+      }
+    })
+  }
+  else {
+    res.render("register_user", { field: "password", error: "Password does not match" });
+  }
 });
 
 app.post("/emp", async function (req, res) {

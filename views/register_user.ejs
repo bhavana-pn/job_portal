@@ -73,9 +73,7 @@ alert("Fill in with correct information");
             </div>
 
             <FORM id="reguser" METHOD="post" ACTION="/sub" class="form-horizontal">
-                <% if(user != null) {  %> 
-                    <h4 style="color: red;"><%= error %> </h4><br>
-                <% } %>
+
                 <h3 class="h3style"> Your Login Details </h3>
 
 
@@ -85,7 +83,11 @@ alert("Fill in with correct information");
                         <input type="email" name="useremail" placeholder="Your E-mail" class="form-control" id="email"
                             required>
                     </div>
-                    <label id="emailerror" class="error"></label>
+                    <% if(error !=null && field=="email" ) { %>
+                        <h4 style="color: red;">
+                            <%= error %>
+                        </h4><br>
+                        <% } %>
                 </div>
 
                 <div class="form-group">
@@ -93,7 +95,11 @@ alert("Fill in with correct information");
                     <div class="col-sm-4"> <input type="password" id="passnew" placeholder="New Password" name="pass1"
                             class="form-control" required>
                     </div>
-                    <label id="passerror" class="error"></label>
+                    <% if(error !=null && field=="password" ) { %>
+                        <h4 style="color: red;">
+                            <%= error %>
+                        </h4><br>
+                        <% } %>
                 </div>
 
                 <div class="form-group">
@@ -136,7 +142,8 @@ alert("Fill in with correct information");
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="nation">Country:</label>
                     <div class="col-sm-4">
-                        <input type="text" name="nation" placeholder="Country" class="form-control" id="nation" required>
+                        <input type="text" name="nation" placeholder="Country" class="form-control" id="nation"
+                            required>
                     </div>
                     <label id="emailerror" class="error"></label>
                 </div>
@@ -144,7 +151,7 @@ alert("Fill in with correct information");
                 <div class="form-group">
                     <label class="control-label col-sm-3 " for="state"> State:</label>
                     <div class="col-sm-4"> <input type="text" id="state" placeholder="State" name="state"
-                            class="form-control" required >
+                            class="form-control" required>
                     </div>
                     <label id="passerror" class="error"></label>
                 </div>
@@ -161,8 +168,7 @@ alert("Fill in with correct information");
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="mobno">Enter your Mobile number:</label>
                     <div class="col-sm-3"><input type="text" name="mobno" placeholder=" Mobile number"
-                            class="form-control" id="mobno" required
-                            >
+                            class="form-control" id="mobno" required>
                     </div>
                     <label id="mobnoerror" class="error"></label>
                 </div>
@@ -194,7 +200,7 @@ alert("Fill in with correct information");
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="skills"> What are your Key Skills:</label>
                     <div class="col-sm-4"><input type="text" name="skills" placeholder="skills" class="form-control"
-                            name="skills" id="skills" required >
+                            name="skills" id="skills" required>
                     </div>
                     <label id="skillerror" class="error"></label>
                 </div>
