@@ -35,57 +35,100 @@ app.get("/forgot_pass", function (req, res) {
   res.render("forgot_pass");
 });
 
-app.post("/sub", function (req, res) {
-  console.log(req.body);
-  const user = new User({
-    email: req.body.useremail,
-    password: md5(req.body.pass1),
-    name: req.body.uname,
-    country: req.body.nation,
-    state: req.body.state,
-    pincode: req.body.pin,
-    mobile: req.body.mobno,
-    experience: req.body.experience,
-    skills: req.body.pass2,
-    basic: req.body.ugcourse,
-    master: req.body.pgcourse,
-  });
-  // try {
-  //   console.log("Inside Try Block")
-  //   const newUser = await user.save()
-  //   console.log("Try Block")
-  //   res.redirect("login")
-  // } catch (err) {
-  //   console.log("Catch block")
-  //   res.redirect("register_user")
-  // }
-  user.save((err, newUser) => {
-    if (err) {
-      res.render("register_user", {
-        user: user,
-        error: err,
-      });
-      console.log("Error " + err);
-    } else {
-      res.redirect("login");
-    }
-  });
+app.get("/profile", function (req, res) {
+  res.render("profile");
 });
 
-app.post("/emp", async function (req, res) {
-  const company = new Company({
-    email: req.body.email,
-    password: req.body.pass1,
-    compname: req.body.pass2,
-    company: req.body.compname,
-    type: req.body.comtype,
-    industry: req.body.indtype,
-    address: req.body.addr,
-    pincode: req.body.pin_code,
-    name: req.body.person,
-    mobile: req.body.phone,
-    about: req.body.about,
+app.post("/sub", function (req, res) {
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (!err) {
+      res.render("register_user", {
+        field: "email",
+        error: "Email already exists",
+      });
+    }
   });
+
+  if (req.body.pass1 == req.body.pass2) {
+    const user = new User({
+      email: req.body.useremail,
+      password: md5(req.body.pass1),
+      name: req.body.uname,
+      country: req.body.nation,
+      state: req.body.state,
+      pincode: req.body.pin,
+      mobile: req.body.mobno,
+      experience: req.body.experience,
+      skills: req.body.pass2,
+      basic: req.body.ugcourse,
+      master: req.body.pgcourse,
+    });
+    // try {
+    //   console.log("Inside Try Block")
+    //   const newUser = await user.save()
+    //   console.log("Try Block")
+    //   res.redirect("login")
+    // } catch (err) {
+    //   console.log("Catch block")
+    //   res.redirect("register_user")
+    // }
+    user.save((err, newUser) => {
+      if (err) {
+        res.render("register_user", {
+          error: err,
+        });
+        console.log("Error " + err);
+      } else {
+        res.redirect("login");
+      }
+    });
+  } else {
+    res.render("register_user", {
+      field: "password",
+      error: "Password not matched",
+    });
+  }
+});
+
+app.post("/emp", function (req, res) {
+  Company.findOne({ email: req.body.email }, function (err, user) {
+    if (!err) {
+      res.render("register", {
+        field: "email",
+        error: "Email already exists",
+      });
+    }
+  });
+
+  if (req.body.pass1 == req.body.pass2) {
+    const company = new Company({
+      email: req.body.email,
+      password: md5(req.body.pass1),
+      company: req.body.compname,
+      type: req.body.comtype,
+      industry: req.body.indtype,
+      address: req.body.addr,
+      pincode: req.body.pin_code,
+      name: req.body.person,
+      mobile: req.body.phone,
+      about: req.body.about,
+    });
+    user.save((err, newUser) => {
+      if (err) {
+        res.render("register", {
+          error: err,
+        });
+        console.log("Error " + err);
+      } else {
+        res.redirect("login");
+      }
+    });
+  } else {
+    res.render("register", {
+      field: "password",
+      error: "Password not matched",
+    });
+  }
 });
 
 app.listen(3000, function () {
