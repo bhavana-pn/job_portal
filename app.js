@@ -1,5 +1,5 @@
-const md5 = require('md5');
-const User = require('./model/User');
+const md5 = require("md5");
+const User = require("./model/User");
 const Company = require("./model/Company");
 
 if (process.env.NODE_ENV !== "production") {
@@ -85,22 +85,19 @@ app.post("/sub", function (req, res) {
 });
 
 app.post("/emp", async function (req, res) {
-  if (req.body.pass1 === req.body.pass2) {
-    const user = new Company({
-      email: req.body.email,
-      password: md5(req.body.pass1),
-      // compname: req.body.pass2,
-      company: req.body.compname,
-      type: req.body.comtype,
-      industry: req.body.indtype.value,
-      address: req.body.addr,
-      pincode: req.body.pin_code,
-      name: req.body.person,
-      mobile: req.body.phone,
-      about: req.body.about,
-    });
-  }
-  res.redirect("register_user");
+  const company = new Company({
+    email: req.body.email,
+    password: req.body.pass1,
+    compname: req.body.pass2,
+    company: req.body.compname,
+    type: req.body.comtype,
+    industry: req.body.indtype,
+    address: req.body.addr,
+    pincode: req.body.pin_code,
+    name: req.body.person,
+    mobile: req.body.phone,
+    about: req.body.about,
+  });
 });
 
 app.listen(3000, function () {
