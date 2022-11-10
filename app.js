@@ -28,7 +28,7 @@ app.get("/register_user", function (req, res) {
 });
 
 app.get("/register", function (req, res) {
-  res.render("register");
+  res.render("register", { field: "", error: "" });
 });
 
 app.get("/forgot_pass", function (req, res) {
@@ -37,6 +37,23 @@ app.get("/forgot_pass", function (req, res) {
 
 app.get("/profile", function (req, res) {
   res.render("profile");
+});
+
+app.post("/login", async function (req, res) {
+  const email = req.body.email;
+  const password = md5(req.body.password);
+  const foundCompany = await Company.find({ email: email, password: password });
+  const foundUser = await User.find({ email: email, password: password });
+  console.log(foundCompany);
+  console.log(foundUser);
+  if (foundCompany != null) {
+    res.render("profile", { company: foundCompany });
+  }
+  else if (foundUser != null) {
+    res.render("profile_user", { user: foundUser });
+  } else {
+    res.render("login");
+  }
 });
 
 app.post("/sub", function (req, res) {
@@ -76,6 +93,7 @@ app.post("/sub", function (req, res) {
       if (err) {
         res.render("register_user", {
           error: err,
+          field: "",
         });
         console.log("Error " + err);
       } else {
@@ -91,7 +109,8 @@ app.post("/sub", function (req, res) {
 });
 
 app.post("/emp", function (req, res) {
-  Company.findOne({ email: req.body.email }, function (err, user) {
+  console.log("Inside emp");
+  Company.findOne({ email: req.body.email }, function (err, company) {
     if (!err) {
       res.render("register", {
         field: "email",
@@ -99,6 +118,7 @@ app.post("/emp", function (req, res) {
       });
     }
   });
+  console.log("After findOne");
 
   if (req.body.pass1 == req.body.pass2) {
     const company = new Company({
@@ -113,13 +133,16 @@ app.post("/emp", function (req, res) {
       mobile: req.body.phone,
       about: req.body.about,
     });
-    company.save((err, newUser) => {
+    console.log("Before save");
+    company.save((err, newCompany) => {
       if (err) {
+        console.log("Error " + err);
         res.render("register", {
           error: err,
+          field: "",
         });
-        console.log("Error " + err);
       } else {
+        console.log("Before redirect to login");
         res.redirect("login");
       }
     });
