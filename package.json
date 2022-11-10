@@ -19,5 +19,13 @@
     "dotenv": "^16.0.3",
     "nodemon": "^2.0.20"
   },
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhavana-pn/job_portal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bhavana-pn/job_portal/issues"
+  },
+  "homepage": "https://github.com/bhavana-pn/job_portal#readme"
 }
