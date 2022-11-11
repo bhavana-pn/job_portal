@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<META HTTP-EQUIV="refresh" CONTENT="15">
+
+<head>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <!-- <script type="text/javascript">
+    function deletejob(jobid) {
+    // alert(keyword);
+    var xmlhttp;
+    if (window.XMLHttpRequest) { // for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+    } else { // for IE6, IE5
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState != 4 && xmlhttp.status == 200) {
+    document.getElementById("tablecontentt").innerHTML = "Processing..";
+    } else if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    document.getElementById("tablecontent").innerHTML = xmlhttp.responseText;
+    } else {
+    document.getElementById("tablecontent").innerHTML = "Error Occurred. <a href='managejobs.php'>Reload Or Try Again</a> the page.";
+    }
+    }
+    xmlhttp.open("GET", "deletejob.php?jid=" + jobid , true);
+    xmlhttp.send();
+    }
+    </script> -->
+    <title> view Jobs </title>
+</head>
+
+<body>
+
+    <div id="nav">
+        <nav>
+            <div class="collapse navbar-collapse" id="insidenav" style="background-color:#dd4814">
+                <div class="navbar-header">
+                    <a class="navbar-brand" style="color: white;">Job Portal</a>
+                </div>
+
+                <ul class="nav navbar-nav">
+                        
+                    <li style="margin-left:1555px"><a style="color: white;" onmouseover="this.style.color='black'"
+                            onmouseleave="this.style.color='white'" href="/login">
+                            Logout</a></li>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div><!-- /.container-fluid -->
+
+
+    <div class="container">
+        <center>
+            <h2>View Job </h2>
+        </center>
+        <div class="page-header" style="background: #f4511e"></div>
+        <button class="btn btn-warning" onclick="goBack()"><span
+                class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back to Profile</button>
+
+        <div id="tablecontent">
+            <h3> Job Details: </h3>
+            <table class="table table-responsive">
+                <tr>
+                    <td class="tbold">Job Title: </td>
+                    <td>
+                        <%=job.title%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Number of Vacancies: </td>
+                    <td>
+                        <%=job.no_of_vacancies%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Job Description:</td>
+                    <td>
+                        <%=job.description%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Required Experience:</td>
+                    <td>
+                        <%=job.experience%>Years
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Basic Pay:</td>
+                    <td>
+                        <%=job.basic_pay%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Functional Area:</td>
+                    <td>
+                        <%=job.functional_area%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold"> Location:</td>
+                    <td>
+                        <%=job.location%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Industry:</td>
+                    <td>
+                        <%=job.industry%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Required UG Qualification:</td>
+                    <td>
+                        <%=job.ug_qualification%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Required PG Qualification:</td>
+                    <td>
+                        <%=job.pg_qualification%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Desired Candidate Profile:</td>
+                    <td>
+                        <%=job.desired_candidate_profile%>
+                    </td>
+                </tr>
+
+            </table>
+            <table class="table">
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="">
+                            <span class='glyphicon glyphicon-trash'></span> Delete Job
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div> <!-- table content -->
+        <div class="page-header" />
+
+    </div>
+</body>
+<link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/employer.css" rel="stylesheet">
+<script src="../js/jquery-1.12.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+
+</html>

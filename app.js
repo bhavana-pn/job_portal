@@ -59,6 +59,17 @@ app.get("/postjob/:id", function (req, res) {
   });
 });
 
+app.get('/viewpostedjob/:id', function(req, res){
+  Job.find({ companyid: req.params.id }, function(err, job){
+    if(err){
+      console.log(err);
+    }else{
+      console.log('Found job in viewposted job: ',job);
+      res.render('viewpostedjob', {job: job[0]});
+    }
+  });
+});
+
 app.get('/viewjobs/:id,:userid', function (req, res) {
   console.log("Entered viewjobs");
   console.log(req.params.id);
@@ -87,7 +98,7 @@ app.get('/applyjob/:jobid,:userid', function (req, res) {
   console.log("Entered applyjob");
   //find job which has id = req.params.jobid
   Job.findById(req.params.jobid, function (err, job) {
-    if (err) {
+    if (err) {  
       console.log(err);
     } else {
       console.log(job);
