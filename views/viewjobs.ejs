@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <!-- 
+    <script type="text/javascript">
+        function apply(jobid) {
+            // alert(keyword);
+            var xmlhttp;
+            if (window.XMLHttpRequest) { // for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else { // for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState != 4 && xmlhttp.status == 200) {
+                    document.getElementById("applydiv").innerHTML = "Processing..";
+                } else if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("applydiv").innerHTML = xmlhttp.responseText;
+                } else {
+                    document.getElementById("applydiv").innerHTML = "Error Occurred. <a href='profile.php'>Reload Or Try Again</a> the page.";
+                }
+            }
+            xmlhttp.open("GET", "apply_job.php?jid=" + jobid, true);
+            xmlhttp.send();
+        }
+    </script> -->
+    <title>View Job </title>
+</head>
+
+<body>
+
+    <div id="nav">
+        <nav class="navbar-fixed-top">
+            <div class="collapse navbar-collapse" id="insidenav">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Job Portal</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="profile.php">
+                            <!-- name -->
+                            <span class="sr-only">(current)</span>
+                        </a></li>
+                    <li><a href="#">Notifications</a></li>
+                    <li class="active"><a href="#"> View Job </a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Options<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Update Profile</a></li>
+                            <li><a href="#">View Applied Jobs</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">View Selected Jobs</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search" method="get" action="#">
+                    <div class="form-group">
+                        <input type="text" name="keyword" class="form-control" placeholder="Search Jobs">
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Account<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Account Overview</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Account Settings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/login">Logout</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div><!-- /.container -->
+
+    <div class="container">
+        <center>
+            <h3>
+                <%= job.title %> 
+            </h3>
+            <br><br><br><br>
+        </center>
+        
+        <div id="applydiv"></div>
+        <div class="page-header" style="background: midnightblue"></div>
+
+        <div id="tablecontent">
+            <h3> Job Details: </h3>
+
+            <table class="table table-responsive">
+                <tr>
+                    <td class="tbold"> Company: </td>
+                    <td>
+                        <%= job.companyname %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Number of Vacancies: </td>
+                    <td>
+                        <%=job.no_of_vacancies%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Job Description:</td>
+                    <td>
+                        <%=job.description%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Required Experience:</td>
+                    <td>
+                    <%= job.experience %>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Basic Pay:</td>
+                    <td>
+                        <%=job.basic_pay%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Functional Area:</td>
+                    <td>
+                        <%= job.functional_area %> 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold"> Location:</td>
+                    <td>
+                        <%=job.location%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Industry:</td>
+                    <td>
+                        <%=job.industry%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Required UG Qualification:</td>
+                    <td>
+                        <%=job.ug_qualification%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Required PG Qualification:</td>
+                    <td>
+                        <%=job.pg_qualification%>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbold">Desired Candidate Profile:</td>
+                    <td>
+                    <%=job.desired_candidate_profile%>
+                    </td>
+                </tr>
+
+            </table>
+            <div class="page-header" />
+            <button class="btn btn-warning btn-lg" onclick="goBack()"><span class="glyphicon glyphicon-arrow-left"></span>
+                Back </button>
+            <a href="/applyjob/<%= job._id %>,<%= user._id %>">
+                <button type="button" class="btn btn-success btn-lg">
+                    <span class='glyphicon glyphicon-ok'></span> Apply for this Job
+                </button>
+            </a>
+
+        </div>
+</body>
+<link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/jobseeker.css" rel="stylesheet">
+<script type="text/javascript" src="../js/validate.js"></script>
+<script src="../js/jquery-1.12.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../location/location.js"></script>
+
+</html>

@@ -42,17 +42,19 @@ else
 ?> -->
 <!DOCTYPE HTML>
 <html>
+
 <head>
 
-<meta charset="utf-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Profile - <%= user[0].name%></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Profile - <%= user[0].name%>
+    </title>
     <!-- <script type="text/javascript">
         function advsearch() {
             var comp=document.getElementById("company").value;
@@ -80,158 +82,210 @@ else
         }
     </script> -->
 </head>
+
 <body>
 
-<div id="nav">
-    <nav class="navbar">
-        <div class="navbar" id="insidenav">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Job Portal</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="profile_user">Profile<span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Notifications</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Update Profile</a></li>
-                        <li><a href="view_applied.php">View Applied Jobs</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="view_selected.php">View Selected Jobs</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search Jobs">
+    <div id="nav">
+        <nav class="navbar">
+            <div class="navbar" id="insidenav">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Job Portal</a>
                 </div>
-                <button type="button" class="btn btn-default" onclick="search();">Search</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Account Overview</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Account Settings</a></li>
-                   </ul>
-                </li>
-                <li><a href="/login">Logout</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </nav>
-</div><!-- /.container-fluid -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="profile_user">Profile<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Notifications</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Options<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Update Profile</a></li>
+                            <li><a href="view_applied.php">View Applied Jobs</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="view_selected.php">View Selected Jobs</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search Jobs">
+                    </div>
+                    <button type="button" class="btn btn-default" onclick="search();">Search</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Account<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Account Overview</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Account Settings</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/login">Logout</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div><!-- /.container-fluid -->
 
-<!------------------------------------------------------------------------------- -->
-<div class="container-fluid" id="content">
+    <!------------------------------------------------------------------------------- -->
+    <div class="container-fluid" id="content">
 
-<aside class="col-sm-3" role="complementary">
-    <div class="region region-sidebar-first well" id="sidebar">
-     <h3 style="color: #009999" class="text-center" > Welcome <%=user[0].name%> </h3>
-     </div>
-
-  <!-- profile pic -->
-    <div class="thumbnail text-center">
-        <div class="img thumbnail">
-           <?php if($row['photo']!="") {
-              echo "<img src = '../uploads/images/".$row['photo']."' class='img-circle' >";
-             }else echo" <img src='../images/user_fallback.png'>";
-           ?>
-        </div>
-         <strong><?php echo $row['name']; ?> </strong>
-          <!-- Button trigger modal -->
-          <p><button type="button" class="btn btn-default" data-toggle="modal" data-target="#changeimg">Change Image </button></a>
-<!--------------------------- profile pic --------------------------------------- -->
-<div class="modal fade" id="changeimg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Change or upload your profile image</h4>
-      </div>
-      <div class="modal-body">
-       <form method="post" action="../upload.php?type=image" enctype="multipart/form-data">
-            <div class="form-group form-inline">
-                <label for="file" class="control-label">Select your photo:</label>
-                <input type=file name="file" id="file" class="form-control">
+        <aside class="col-sm-3" role="complementary">
+            <div class="region region-sidebar-first well" id="sidebar">
+                <h3 style="color: #009999" class="text-center"> Welcome <%=user[0].name%>
+                </h3>
             </div>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" id="submit" name="submit" class="btn btn-primary">Save changes</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- profile pic -->
 
-</aside>
+            <!-- profile pic -->
+            <div class="thumbnail text-center">
+                <div class="img thumbnail">
+                    <img src='../images/user_fallback.png'>
+                </div>
+                <strong>
+                    <!-- name -->
+                </strong>
+                <!-- Button trigger modal -->
+                <p><button type="button" class="btn btn-default" data-toggle="modal" data-target="#changeimg">Change
+                        Image </button></a>
+                    <!--------------------------- profile pic --------------------------------------- -->
+                <div class="modal fade" id="changeimg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Change or upload your profile image</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="../upload.php?type=image" enctype="multipart/form-data">
+                                    <div class="form-group form-inline">
+                                        <label for="file" class="control-label">Select your photo:</label>
+                                        <input type=file name="file" id="file" class="form-control">
+                                    </div>
 
-    <!------------------------------------------------------------------------------- -->
-<section class="col-sm-7">
-<div id="searchcontent">
-<!-- Search content overlay div starts here ------------------------------------ --- -->
-<div id="header">
-<h3> Find jobs, edit your profile or update your current resume for better jobs!</h3>
-</div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" id="submit" name="submit" class="btn btn-primary">Save
+                                    changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- profile pic -->
 
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#details">Your Profile</a></li>
-    <li><a data-toggle="tab"  href="#recjobs">Recommended Jobs</a></li>
-    <li><a data-toggle="tab" href="#resume">Update Resume</a></li>
-    <li><a data-toggle="tab" href="#advsearch">Advanced Search</a></li>
-</ul>
+        </aside>
 
-<!------------------------------------------------------------------------------- -->
+        <!------------------------------------------------------------------------------- -->
+        <section class="col-sm-7">
+            <div id="searchcontent">
+                <!-- Search content overlay div starts here ------------------------------------ --- -->
+                <div id="header">
+                    <h3> Find jobs, edit your profile or update your current resume for better jobs!</h3>
+                </div>
 
-    <div class="tab-content">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#details">Your Profile</a></li>
+                    <li><a data-toggle="tab" href="#recjobs">Recommended Jobs</a></li>
+                    <li><a data-toggle="tab" href="#resume">Update Resume</a></li>
+                    <li><a data-toggle="tab" href="#advsearch">Advanced Search</a></li>
+                </ul>
 
-<!------------------------------------------------------------------------------- -->
+                <!------------------------------------------------------------------------------- -->
 
-        <div id="details" class="tab-pane fade in active" style="margin-top: 50px;">
-        <h3> Your Profile</h3>
-        <table class="table" >
-        <tr>
-            <td class="tbold">Full Name:</td>
-            <td><%=user[0].name%></td>
+                <div class="tab-content">
 
-        </tr>
-        <tr>
-            <td class="tbold">Email:</td>
-            <td><%=user[0].email%></td>
-        </tr>
-        <tr>
-            <td class="tbold">Phone:</td>
-            <td><%=user[0].mobile%></td>
-        </tr>
-        <tr>
-            <td class="tbold">Location:</td>
-            <td><%=user[0].country%>, <%=user[0].state%>, <%=user[0].pincode%></td>
-        </tr>
-        <tr>
-            <td class="tbold">Experience (Years):</td>
-            <td><%=user[0].experience%></td>
-        </tr>
-        <tr>
-            <td class="tbold">Skills:</td>
-            <td><%=user[0].skills%></td>
-        </tr>
-        <tr>
-           <td class="tbold">UG Qualification:</td>
-            <td><%=user[0].basic%></td>
-        </tr>
-        <tr>
-            <td class="tbold">PG Qualification:</td>
-            <td><%=user[0].master%></td>
-        </tr>
-    </table>
-</div> <!-- profile -->
-    <!------------------------------------------------------------------------------- -->
-    <div id="recjobs" class="tab-pane fade" style="margin-top: 20px;">
+                    <!------------------------------------------------------------------------------- -->
 
-        <?php
+                    <div id="details" class="tab-pane fade in active" style="margin-top: 50px;">
+                        <h3> Your Profile</h3>
+                        <table class="table">
+                            <tr>
+                                <td class="tbold">Full Name:</td>
+                                <td>
+                                    <%=user[0].name%>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="tbold">Email:</td>
+                                <td>
+                                    <%=user[0].email%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tbold">Phone:</td>
+                                <td>
+                                    <%=user[0].mobile%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tbold">Location:</td>
+                                <td>
+                                    <%=user[0].country%>, <%=user[0].state%>, <%=user[0].pincode%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tbold">Experience (Years):</td>
+                                <td>
+                                    <%=user[0].experience%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tbold">Skills:</td>
+                                <td>
+                                    <%=user[0].skills%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tbold">UG Qualification:</td>
+                                <td>
+                                    <%=user[0].basic%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tbold">PG Qualification:</td>
+                                <td>
+                                    <%=user[0].master%>
+                                </td>
+                            </tr>
+                        </table>
+                    </div> <!-- profile -->
+                    <!------------------------------------------------------------------------------- -->
+                    <div id="recjobs" class="tab-pane fade" style="margin-top: 20px;">
+
+                        <table style='margin-top: 20px; background: transparent;' class='table table-sriped'>
+                            <th> Company</th>
+                            <th>Job Title</th>
+                            <th>Job Description</th>
+                            <th>Basic Salary</th>
+                            <th>No of Vacancies</th>
+                            <th colspan='3'>Actions</th>
+                            <% jobs.forEach(job=> { %>
+                                <tr>
+                                    <td>
+                                        <%= job.companyname %>
+                                    </td>
+                                    <td>
+                                        <%= job.title %>
+                                    </td>
+                                    <td>
+                                        <%= job.description %>
+                                    </td>
+                                    <td>
+                                        <%= job.basic_pay %>
+                                    </td>
+                                    <td>
+                                        <%= job.no_of_vacancies %>
+                                    </td>
+                                    <td><a href="/viewjobs/<%= job._id %>,<%= user[0]._id %>">
+                                            <button>View</button>
+                                        </a></td>
+                                </tr>
+                                <%}); %>
+                        </table>
+                        <!-- <?php
         $ug=$row['basic_edu'];
         $pg=$row['master_edu'];
         $q=mysqli_query($db1,"select * from jobs where ugqual='$ug' OR pgqual = '$pg'");
@@ -262,89 +316,92 @@ else
         else{
            echo "<h3 style='color: #122b40; margin-top: 30px;'>No jobs are reccomended to you at this moment! </h3>";
         }
-        ?>
-        </table>
-    </div>
+        ?> -->
+                        </table>
+                    </div>
 
-<!--------------------------------- Resume ---------------------------------------------- -->
+                    <!--------------------------------- Resume ---------------------------------------------- -->
 
-    <div id="resume" class="tab-pane fade">
-        <div>
-    <form action="../upload.php?type=file" enctype="multipart/form-data" method="post">
-       <?php if($row['Resume']==""){
-    echo "<div class='alert alert-danger alert-dismissible' role='alert'>
-            <button type='button' class='close'  data-dismiss='alert' aria-label='Close'><span
-                    aria-hidden='true'>&times;</span></button>
-           <p style='font-size: 20px'><strong>Note:</strong> You have'nt uploaded a resume file yet! Upload a attractive resume file for a better job!</p>
-        </div>";
-}?>
+                    <div id="resume" class="tab-pane fade">
+                        <div>
+                            <form action="../upload.php?type=file" enctype="multipart/form-data" method="post">
+                                <div class='alert alert-danger alert-dismissible' role='alert'>
+                                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span
+                                            aria-hidden='true'>&times;</span></button>
+                                    <p style='font-size: 20px'><strong>Note:</strong> You have'nt uploaded a resume file
+                                        yet! Upload a attractive resume file for a better job!</p>
+                                </div>
 
-        <h4>Upload your updated resume file:</h4>
-        <hr style="background-color: darkslateblue;">
-        <div class="form-group" >
-            <label class="form-group col-sm-3" for="file" style="font-size:16px; ">Select your resume file:</label>
-             <div class="col-sm-7 form-inline">
-                 <input type="file" name="file" id="resumefile" class="form-control">
-                 <button class="btn btn-success" type="submit" name="submit" value="submit">Upload Resume</button>
-             </div>
-        </div>
-    </form>
-        <div class="page-header"></div>
-        <?php if($row['Resume']!="") {
-                echo "<a href = '../uploads/resume/".$row['Resume']."' > Download Your Current Resume File </a >";
-         }?>
+                                <h4>Upload your updated resume file:</h4>
+                                <hr style="background-color: darkslateblue;">
+                                <div class="form-group">
+                                    <label class="form-group col-sm-3" for="file" style="font-size:16px; ">Select your
+                                        resume file:</label>
+                                    <div class="col-sm-7 form-inline">
+                                        <input type="file" name="file" id="resumefile" class="form-control">
+                                        <button class="btn btn-success" type="submit" name="submit"
+                                            value="submit">Upload Resume</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="page-header"></div>
+                            <br>
+                        </div>
+                    </div> <!-- resume -->
+                    <!------------------------------------------------------------------------------- -->
 
-        <br>
+                    <div id="advsearch" class="tab-pane fade">
+                        <div class="container" id="advsearch">
+                            <h2>Search for jobs</h2>
+                            <form role="form">
+                                <table>
+                                    <tr>
+                                        <td class="tbold">Company Name:</td>
+                                        <td><input type="text" class="form-control" id="company" name="company" required
+                                                placeholder="Company Name:"> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tbold">Location:</td>
+                                        <td>
+                                            <input type="text" class="form-control" id="location" name="location"
+                                                placeholder="Your Prefered Location">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tbold">Job Title:</td>
+                                        <td><input type="text" class="form-control" id="desig" name="desig" required
+                                                placeholder="Job Title/ Designation"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tbold">Skills:</td>
+                                        <td><input type="text" class="form-control" id="skills" name="skills" required
+                                                placeholder="Key Skills"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tbold">Industy type:</td>
+                                        <td><input type="text" class="form-control" id="industry" name="industry"
+                                                placeholder="Industry Type"></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><button type="button" onclick="advsearch()" class="btn btn-success"><span
+                                                    class="glyphicon glyphicon-search"></span> Search Jobs</button></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                        <hr>
+                        <div id="subcontent">
+                            <!---- sub content shows advanced search results --------- -->
+                        </div>
+                    </div>
+                    <!------------------------------------------------------------------------------- -->
+                </div> <!-- tab contents -->
 
-    </div>
-    </div> <!-- resume -->
-    <!------------------------------------------------------------------------------- -->
+            </div><!-- closing searchcontent -->
+        </section> <!-- section 2 ends here -->
 
-    <div id="advsearch" class="tab-pane fade">
-       <div class="container-fluid" id="advsearch" >
-           <h2>Search for jobs</h2>
-           <form role="form">
-              <table>
-                  <tr >
-                    <td class="tbold">Company Name:</td>
-                    <td><input type="text" class="form-control" id="company" name="company" required placeholder="Company Name:"> </td>
-                  </tr>
-                  <tr>
-                    <td class="tbold">Location:</td>
-                    <td>
-                      <input type="text" class="form-control" id="location" name="location" placeholder="Your Prefered Location">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="tbold">Job Title:</td>
-                    <td><input type="text" class="form-control" id="desig" name="desig" required placeholder="Job Title/ Designation"></td>
-                  </tr>
-                  <tr>
-                    <td class="tbold">Skills:</td>
-                    <td><input type="text" class="form-control" id="skills" name="skills" required placeholder="Key Skills"></td>
-                  </tr>
-                  <tr>
-                    <td class="tbold">Industy type:</td>
-                    <td><input type = "text" class="form-control" id="industry" name="industry" placeholder="Industry Type"></td>  </tr>
-                  <tr>
-                      <td></td>
-                      <td><button type="button" onclick="advsearch()" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Search Jobs</button></td>
-                  </tr>
-              </table>
-           </form>
-       </div>
-        <hr>
-        <div id="subcontent">
-        <!---- sub content shows advanced search results --------- -->
-        </div>
-    </div>
-<!------------------------------------------------------------------------------- -->
-</div> <!-- tab contents -->
-
-</div><!-- closing searchcontent -->
-</section> <!-- section 2 ends here -->
-
-</div> <!-- main content div -->
+    </div> <!-- main content div -->
 
 </body>
 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
