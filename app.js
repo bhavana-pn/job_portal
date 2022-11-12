@@ -34,8 +34,104 @@ app.get("/register", function (req, res) {
   res.render("register", { field: "", error: "" });
 });
 
+app.post("/deletejob", function (req, res) {
+  Job.deleteOne({ _id: req.body.jobid }, function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      JobApplication.deleteMany({ jobid: req.body.jobid }, function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          Company.findById(req.body.companyid, function (err, company) {
+            if (err) {
+              console.log(err);
+            } else {
+              res.render("profile", { company: company });
+            }
+          });
+        }
+      });
+    }
+  });
+});
+app.post('/accept_job', function (req, res) {
+  JobApplication.updateOne({ _id: req.body.jobappid }, { status: 'Accepted' }, async function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      jobapps = await JobApplication.find({ companyid: req.body.companyid });
+      console.log('Found jobapp in managejob: ', jobapps);
+      var userarr = [];
+      // jobapps.forEach(jobapp => async function(){
+      //   var user = await User.findById(jobapp.userid);
+      //   console.log('Found user in managejob: ',user);
+      //   userarr.push(user);
+      //   console.log('pushed user in managejob: ',user);
+      // });
+      for (var i = 0; i < jobapps.length; i++) {
+        var user = await User.findById(jobapps[i].userid);
+        console.log('Found user in managejob: ', user);
+        userarr.push(user);
+        console.log('pushed user in managejob: ', user);
+      }
+      console.log('userarr: ', userarr);
+      res.render('managejob', { jobapps: jobapps, userarr: userarr, companyid: req.body.companyid });
+    }
+  });
+});
+
+app.post('/reject_job', function (req, res) {
+  JobApplication.updateOne({ _id: req.body.jobappid }, { status: 'Rejected' }, async function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      jobapps = await JobApplication.find({ companyid: req.body.companyid });
+      console.log('Found jobapp in managejob: ', jobapps);
+      var userarr = [];
+      for (var i = 0; i < jobapps.length; i++) {
+        var user = await User.findById(jobapps[i].userid);
+        console.log('Found user in managejob: ', user);
+        userarr.push(user);
+        console.log('pushed user in managejob: ', user);
+      }
+      console.log('userarr: ', userarr);
+      res.render('managejob', { jobapps: jobapps, userarr: userarr, companyid: req.body.companyid });
+    }
+  });
+});
+
+
+
+app.get('/profile_user/:id', function (req, res) {
+  User.findById(req.params.id, function (err, user) {
+    if (err) {
+      console.log(err);
+    } else {
+      Job.find({}, function (err, jobs) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("profile_user", { user: user, jobs: jobs });
+        }
+      });
+    }
+  });
+});
+
+
 app.get("/forgot_pass", function (req, res) {
   res.render("forgot_pass");
+});
+
+app.get('/viewappliedjob/:id', function (req, res) {
+  JobApplication.find({ userid: req.params.id }, function (err, jobapp) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("viewappliedjob", { jobapp: jobapp });
+    }
+  });
 });
 
 app.get("/profile", function (req, res) {
@@ -59,17 +155,76 @@ app.get("/postjob/:id", function (req, res) {
   });
 });
 
-app.get('/viewpostedjob/:id', function(req, res){
-  Job.find({ companyid: req.params.id }, function(err, job){
-    if(err){
+app.get('/viewpostedjob/:id', function (req, res) {
+  Job.find({ companyid: req.params.id }, function (err, job) {
+    if (err) {
       console.log(err);
-    }else{
-      console.log('Found job in viewposted job: ',job);
-      res.render('viewpostedjob', {job: job[0]});
+    } else {
+      console.log('Found job in viewposted job: ', job);
+      res.render('viewpostedjob', { job: job[0] });
     }
   });
 });
 
+app.post('/managejob', async function (req, res) {
+  jobapps = await JobApplication.find({ companyid: req.body.companyid });
+  console.log('Found jobapp in managejob: ', jobapps);
+  var userarr = [];
+  // jobapps.forEach(jobapp => async function(){
+  //   var user = await User.findById(jobapp.userid);
+  //   console.log('Found user in managejob: ',user);
+  //   userarr.push(user);
+  //   console.log('pushed user in managejob: ',user);
+  // });
+  for (var i = 0; i < jobapps.length; i++) {
+    var user = await User.findById(jobapps[i].userid);
+    console.log('Found user in managejob: ', user);
+    userarr.push(user);
+    console.log('pushed user in managejob: ', user);
+  }
+  console.log('userarr: ', userarr);
+  res.render('managejob', { jobapps: jobapps, userarr: userarr, companyid: req.body.companyid });
+})
+
+// app.get('/managejob/:companyid', async function (req, res) {
+//   // JobApplication.find({ companyid: req.params.companyid }, function (err, jobapps) {
+//   //   if (err) {
+//   //     console.log(err);
+//   //   } else {
+//   //     console.log('Found jobapp in managejob: ', jobapps);
+//   //     var userarr = [];
+//   //     jobapps.forEach(jobapp => {
+//   //       User.findById(jobapp.userid, function (err, user) {
+//   //         if (err) {
+//   //           console.log(err);
+//   //         } else {
+//   //           console.log('Found user in managejob: ',user);
+//   //           userarr.push(user[0]);
+//   //         }
+//   //       });
+//   //     });
+//   //     console.log('userarr: ',userarr);
+//   //     res.render('managejob', { jobapps: jobapps, userarr: userarr });
+//   //   }
+//   // });
+//   jobapps = await JobApplication.find({ companyid: req.params.companyid });
+//   console.log('Found jobapp in managejob: ', jobapps);
+//   var userarr = [];
+//   // jobapps.forEach(jobapp => async function(){
+//   //   var user = await User.findById(jobapp.userid);
+//   //   console.log('Found user in managejob: ',user);
+//   //   userarr.push(user);
+//   //   console.log('pushed user in managejob: ',user);
+//   // });
+//   for (var i = 0; i < jobapps.length; i++) {
+//     var user = await User.findById(jobapps[i].userid);
+//     console.log('Found user in managejob: ', user);
+//     userarr.push(user);
+//     console.log('pushed user in managejob: ', user);
+//   }
+//   console.log('userarr: ', userarr);
+//   res.render('managejob', { jobapps: jobapps, userarr: userarr });
+// });
 app.get('/viewjobs/:id,:userid', function (req, res) {
   console.log("Entered viewjobs");
   console.log(req.params.id);
@@ -98,7 +253,7 @@ app.get('/applyjob/:jobid,:userid', function (req, res) {
   console.log("Entered applyjob");
   //find job which has id = req.params.jobid
   Job.findById(req.params.jobid, function (err, job) {
-    if (err) {  
+    if (err) {
       console.log(err);
     } else {
       console.log(job);
@@ -116,6 +271,17 @@ app.get('/applyjob/:jobid,:userid', function (req, res) {
           res.redirect('/successfull_application');
         }
       });
+    }
+  });
+});
+app.post("/profile", function (req, res) {
+  console.log(req.body.companyid);
+  Company.findById(req.body.companyid, function (err, company) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(company);
+      res.render("profile", { company: company });
     }
   });
 });
@@ -167,7 +333,7 @@ app.post("/login", function (req, res) {
     } else {
       if (company.length > 0) {
         console.log(company);
-        res.render("profile", { company: company });
+        res.render("profile", { company: company[0] });
       }
       else {
         User.find({ email: email, password: password }, function (err, user) {
@@ -183,7 +349,7 @@ app.post("/login", function (req, res) {
                 } else {
                   // log the company
                   console.log(jobs);
-                  res.render("profile_user", { user: user, jobs: jobs });
+                  res.render("profile_user", { user: user[0], jobs: jobs });
                 }
               });
             }
@@ -385,6 +551,7 @@ app.listen(3000, function () {
 });
 
 const mongoose = require("mongoose");
+const JobApplications = require("./model/JobApplications");
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 
 const db = mongoose.connection;

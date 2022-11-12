@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>View Applied Jobs</title>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
+<div id="nav">
+    <nav>
+        <div class="navbar" id="insidenav">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Job Portal</a>
+            </div>
+            <ul class="nav navbar-nav">
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login">Logout</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</div><!-- /.container-fluid -->
+
+<body>
+    <div class="container">
+        <h3 class="text-center" style="margin-top: 50px; color: #265a88">You Applied for these jobs</h3>
+        <div class='page-header' style='background:skyblue'></div>
+        <table class="table table-responsive" style="margin-top: 30px;">
+            <% if(jobapp == null) {%> 
+                <center>
+                    <h1 style="color: red; font-weight: bold;">No Jobs Applied</h1>
+                </center>
+            <% } else { %>
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Company Name</th>
+                        <th>Job Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i<jobapp.length; i++) { %>
+                        <tr>
+                            <td><%= jobapp[i].jobtitle %></td>
+                            <td><%= jobapp[i].companyname %> </td>
+                            <% var col = {'Rejected': "red", 'Pending': "yellow", 'Accepted': "green"} %>
+                            <% var col1 = col[jobapp[i].status] %>
+                            <td style="color: '<%= col1 %>';"><%= jobapp[i].status %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            <% } %>
+        </table>
+            
+        <button class="btn btn-warning btn-lg" onclick="goBack()"><span class="glyphicon glyphicon-arrow-left"></span>
+            Back </button>
+    </div>
+    </div>
+</body>
+<link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/jobseeker.css" rel="stylesheet">
+<script type="text/javascript" src="../js/validate.js"></script>
+<script src="../js/jquery-1.12.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../location/location.js"></script>
+
+</html>

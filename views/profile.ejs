@@ -25,12 +25,15 @@
                             onmouseleave="this.style.color='white'" aria-expanded="false">Menu<span
                                 class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <% console.log('company id : ', company[0]._id.toString()) %> 
-                            <li><a href="/postjob/<%= company[0]._id %>">Post Job</a></li>
+                            <% console.log('company id : ', company._id.toString()) %> 
+                            <li><a href="/postjob/<%= company._id %>">Post Job</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="/viewpostedjob/<%= company[0]._id %> ">View Job</a></li>
+                            <li><a href="/viewpostedjob/<%= company._id %> ">View Job</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="/managejob/<%= company[0]._id %>">Manage Job</a></li>
+                            <li><form action="/managejob" method="post">
+                                <input type="hidden" name="companyid" value="<%= company._id %>">
+                                <button style="background-color: white;border: none; padding: 6px 20px;" type="submit" href="#">Manage Job</button>
+                            </form></li>
                         </ul>
                     </li>
                 </ul>
@@ -90,39 +93,39 @@
                 <table class="table">
                     <tr>
                         <td class="tbold">Name:</td>
-                        <td><strong><%= company[0].company %> </strong></td>
+                        <td><strong><%= company.company %> </strong></td>
                     </tr>
                     <tr>
                         <td class="tbold">Type:</td>
-                        <td><%= company[0].type %></td>
+                        <td><%= company.type %></td>
                     </tr>
                     <tr>
                         <td class="tbold">Industry:</td>
-                        <td><%= company[0].industry %></td>
+                        <td><%= company.industry %></td>
                     </tr>
                     <tr>
                         <td class="tbold">Address:</td>
-                        <td><%= company[0].address %></td>
+                        <td><%= company.address %></td>
                     </tr>
                     <tr>
                         <td class="tbold">Pincode:</td>
-                        <td><%= company[0].pincode %></td>
+                        <td><%= company.pincode %></td>
                     </tr>
                     <tr>
                         <td class="tbold">Executive Name:</td>
-                        <td><%= company[0].name %></td>
+                        <td><%= company.name %></td>
                     </tr>
                     <tr>
                         <td class="tbold">Phone Number:</td>
-                        <td><%= company[0].mobile %></td>
+                        <td><%= company.mobile %></td>
                     </tr>
                     <tr>
                         <td class="tbold">Email:</td>
-                        <td><%= company[0].email %></td>
+                        <td><%= company.email %></td>
                     </tr>
                     <tr>
                         <td class="tbold">About Company:</td>
-                        <td><%= company[0].about %></td>
+                        <td><%= company.about %></td>
                     </tr>
                 </table>
             </div>

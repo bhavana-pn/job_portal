@@ -19,6 +19,10 @@ const jobApplicationSchema = new mongoose.Schema({
     },
     jobtitle: {
         type: String,
+    },
+    status: {
+        type: String,
+        default: 'Pending'
     }
 });
 module.exports = mongoose.model('JobApplication', jobApplicationSchema)
