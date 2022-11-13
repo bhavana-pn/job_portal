@@ -1,50 +1,12 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Job Seeker Registration</title>
-    <!-- <script type="text/javascript">
-             function checkForm() {
-
-// Fetching values from all input fields and storing them in variables.
-var email = document.getElementById("emailerror").innerHTML;
-var pass1 = document.getElementById("passerror").innerHTML;
-var pass2 = document.getElementById("passerror2").innerHTML;
-var name = document.getElementById("nameerror").innerHTML;
-var mobno = document.getElementById("mobnoerror").innerHTML;
-var skills = document.getElementById("skillerror").innerHTML;
-//Check input Fields Should not be blanks.
-var p1=document.getElementById("passnew").value;
-var p2=document.getElementById("passconf").value;
-    if (p1 != p2) {
-        document.getElementById("passerror2").innerHTML="Password Donot Match" ;
-    }
-    else
-    {
-        document.getElementById("passerror2").innerHTML="" ;
-
-    }
-
-if(email == '' && pass1 == '' && pass2 == '' &&  name == "" && mobno == '' && skills =='') {
-    //document.getElementById("reguser").submit();
-                     return true;
-}
-else {
-alert("Fill in with correct information");
-                     return false;
-
-}
-        }
-
-
- </script> -->
 </head>
-
 <body>
-
     <nav class="navbar" id="insidenav">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -52,16 +14,13 @@ alert("Fill in with correct information");
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/register_user">Jobseeker Registraation</a></li>
-
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </nav>
-
     <div class="container">
-
         <div class="container">
             <div class="jumbotron">
                 <h1>Register & find Jobs</h1>
@@ -71,12 +30,9 @@ alert("Fill in with correct information");
                     Apply to jobs in just one click. Apply to thousands of jobs posted daily.
                 </p>
             </div>
-
             <FORM id="reguser" METHOD="post" ACTION="/sub" class="form-horizontal">
                 
                         <h3 class="h3style"> Your Login Details </h3>
-
-
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="email">Enter your Email ID:</label>
                             <div class="col-sm-4">
@@ -89,14 +45,12 @@ alert("Fill in with correct information");
                                 </h4><br>
                                 <% } %>
                         </div>
-
                         <div class="form-group">
                             <label class="control-label col-sm-2 " for="passnew"> Create new Password:</label>
                             <div class="col-sm-4"> <input type="password" id="passnew" placeholder="New Password"
                                     name="pass1" class="form-control" required>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="passconf">Confirm the Password:</label>
                             <div class="col-sm-4">
@@ -109,10 +63,8 @@ alert("Fill in with correct information");
                                 </h4><br>
                                 <% } %>
                         </div>
-
                         <div class="page-header"></div>
                         <h3 class="h3style">Your Contact Information</h3>
-
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="name">Mention your Full Name:</label>
                             <div class="col-sm-4">
@@ -120,24 +72,6 @@ alert("Fill in with correct information");
                                     required>
                             </div>
                         </div>
-
-                        <!-- <div class="form-group">
-    <label class="control-label col-sm-3" for="national"> location: </label>
-        <div class="form-inline col-sm-7" id="location">
-                <select name="country" class=" form-control countries" id="countryId" style="width:145px;" required>
-                    <option value="">Select Country</option>
-                </select>
-
-                <select name="state" class="form-control states" id="stateId" style="width:145px;" required>
-                    <option value="">Select State</option>
-                </select>
-
-                <select name="city" class="form-control cities" id="cityId" style="width:145px;">
-                    <option value="">Select City</option>
-                </select>
-        </div> -->
-
-
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="nation">Country:</label>
                             <div class="col-sm-4">
@@ -145,33 +79,26 @@ alert("Fill in with correct information");
                                     required>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="control-label col-sm-3 " for="state"> State:</label>
                             <div class="col-sm-4"> <input type="text" id="state" placeholder="State" name="state"
                                     class="form-control" required>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="pin">Pin Code:</label>
                             <div class="col-sm-4">
                                 <input type="pincode" id="pin" placeholder="Pin Code" name="pin" class="pin" required>
                             </div>
                         </div>
-
-                        <!-- </div> -->
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="mobno">Enter your Mobile number:</label>
                             <div class="col-sm-3"><input type="text" name="mobno" placeholder=" Mobile number"
                                     class="form-control" id="mobno" required>
                             </div>
                         </div>
-
                         <div class="page-header"></div>
                         <h3 class="h3style"> Your Current Employment Details </h3>
-
-
                         <div class="form-group">
                             <label for="experience" class="control-label col-sm-4"> How much work experience do you
                                 have:</label>
@@ -191,19 +118,14 @@ alert("Fill in with correct information");
                             </div>
                         </div>
                         <br><br>
-
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="skills"> What are your Key Skills:</label>
                             <div class="col-sm-4"><input type="text" name="skills" placeholder="skills"
                                     class="form-control" name="skills" id="skills" required>
                             </div>
                         </div>
-
-
                         <div class="page-header"></div>
                         <h3 class="h3style"> Your Educational Qualifications </h3>
-
-
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="ugcourse"> Your Basic Education: </label>
                             <div class="col-sm-4"> <select name="ugcourse" id="ugcourse" class=" form-control" required>
@@ -256,17 +178,12 @@ alert("Fill in with correct information");
                                 </select>
                             </div>
                         </div>
-
                         <div class="page-header"> </div>
-
                         <div class="form-group form-inline col-sm-10">
-
                             <button class="btn btn-success" type="submit" id="reg" value="submit">Register</button>
                             <label class="col-sm-2"></label>
                             <button class="btn btn-danger" type="reset" id="reset"> Reset </button>
-
                         </div>
-
             </form>
             <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
             <link href="../css/main.css" rel="stylesheet">
@@ -276,5 +193,4 @@ alert("Fill in with correct information");
             <script src="../js/bootstrap.min.js"></script>
             <script src="../location/location.js"></script>
 </body>
-
 </html>

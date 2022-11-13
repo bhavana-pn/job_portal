@@ -1,52 +1,12 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NEW CLIENT REGISTRATION</title>
-
-    <!-- <script type="text/javascript" src="/job_portal/js/validate.js"></script> -->
-    <!-- <script>
-        function checkForm() {
-
-            var email = document.getElementById("emailerror").innerHTML;
-            var pass1 = document.getElementById("pass1error").innerHTML;
-            var pass2 = document.getElementById("pass2error").innerHTML;
-            var compname = document.getElementById("comperror").innerHTML;
-            var addr = document.getElementById("addrerror").innerHTML;
-            var pincode = document.getElementById("pinerror").innerHTML;
-            var person = document.getElementById("personerror").innerHTML;
-            var phone = document.getElementById("pherror").innerHTML;
-            var about = document.getElementById("abouterror").innerHTML;
-
-            var p1 = document.getElementById("pass1").value;
-            var p2 = document.getElementById("pass2").value;
-            if (p1 != p2) {
-                document.getElementById("pass2error").innerHTML = "Password Donot Match";
-            } else {
-                document.getElementById("pass2error").innerHTML = "";
-
-            }
-
-            if (email == "" && pass1 == "" && pass2 == "" && compname == "" && addr == "" && pincode == "" && person ==
-                "" && phone == "" && about == "") {
-
-
-                return true;
-            } else {
-
-                alert("Fill in with correct information");
-                return false;
-            }
-
-        }
-    </script> -->
 </head>
-
 <body>
-
     <nav class="navbar" id="insidenav">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -60,7 +20,6 @@
             </ul>
         </div>
     </nav>
-
     <div class="container">
         <div class="jumbotron">
             <h1>Register your company</h1>
@@ -74,7 +33,6 @@
         <form role="form" id="regcomp" class="form-horizontal" method="post" action="/emp">
             <h3 class="h3style"> Your Login details </h3>
             <div class="page-header"> </div>
-
             <div class="form-group">
                 <label for="email" class="control-label col-sm-2">E-mail:</label>
                 <div class="col-sm-4">
@@ -87,7 +45,6 @@
                     </h4><br>
                     <% } %>
             </div>
-
             <div class="form-group">
                 <label class="control-label col-sm-2" for="pass1">Password:</label>
                 <div class="col-sm-4">
@@ -95,7 +52,6 @@
                         class="form-control" required>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="pass2" class="control-label col-sm-2"> Confrim Password: </label>
                 <div class="col-sm-4">
@@ -108,11 +64,9 @@
                     </h4><br>
                     <% } %>
             </div>
-
             <div class="page-header"></div>
             <h3 class="h3style"> Your Company Details</h3>
             <div class="page-header"></div>
-
             <div class="form-group">
                 <label class="control-label col-sm-2"> Company Name:</label>
                 <div class="col-sm-5">
@@ -120,8 +74,6 @@
                         placeholder="Enter Company Name" required>
                 </div>
             </div>
-
-
             <div class="form-group">
                 <label class="control-label col-sm-2" for="comtype"> Company Type: </label>
                 <div class="col-sm-4 form-inline" id="comtype">
@@ -131,7 +83,6 @@
                             value="Consultant">Consultant</label>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="indtype" class="control-label col-sm-2">Industry:</label>
                 <div class="col-sm-4">
@@ -151,14 +102,12 @@
                     </select>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="addr" class="control-label col-sm-2">Address:</label>
                 <div class="col-sm-5"><textarea id="addr" rows="5" name="addr" class="form-control" required
                         onblur="validate('address','addrerror',this.value)"></textarea>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="pincode" class="control-label col-sm-2">Pincode:</label>
                 <div class="col-sm-4">
@@ -166,7 +115,6 @@
                         id="pincode" required>
                 </div>
             </div>
-
             <div class="form-group">
                 <label class="control-label col-sm-2" for="person">Contact Person:</label>
                 <div class="col-sm-4">
@@ -174,7 +122,6 @@
                         required>
                 </div>
             </div>
-
             <div class="form-group">
                 <label class="control-label col-sm-2" for="phone">Contact Number:</label>
                 <div class="col-sm-4">
@@ -182,23 +129,6 @@
                         required>
                 </div>
             </div>
-
-            <!-- <div class="form-group">
-                <label class="control-label col-sm-2"> Where are you currently located? </label>
-                <div class="form-inline">
-                    <select name="country" class=" form-control countries" id="countryId" style="width:145px;" required>
-                        <option value="">Select Country</option>
-                    </select>
-
-                    <select name="state" class="form-control states" id="stateId" style="width:145px;" required>
-                        <option value="">Select State</option>
-                    </select>
-
-                    <select name="city" class="form-control cities" id="cityId" style="width:145px;">
-                        <option value="">Select City</option>
-                    </select>
-                </div>
-            </div> -->
             <div class="form-group">
                 <label class="control-label col-sm-2">About Company:</label>
                 <div class="col-sm-5">
@@ -223,5 +153,4 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/location/location.js"></script>
 </body>
-
 </html>

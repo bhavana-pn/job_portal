@@ -4,60 +4,30 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <META HTTP-EQUIV="refresh" CONTENT="15">
-
 <head>
     <script>
         function goBack() {
             window.history.back();
         }
     </script>
-    <!-- <script type="text/javascript">
-    function deletejob(jobid) {
-    // alert(keyword);
-    var xmlhttp;
-    if (window.XMLHttpRequest) { // for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp = new XMLHttpRequest();
-    } else { // for IE6, IE5
-    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState != 4 && xmlhttp.status == 200) {
-    document.getElementById("tablecontentt").innerHTML = "Processing..";
-    } else if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    document.getElementById("tablecontent").innerHTML = xmlhttp.responseText;
-    } else {
-    document.getElementById("tablecontent").innerHTML = "Error Occurred. <a href='managejobs.php'>Reload Or Try Again</a> the page.";
-    }
-    }
-    xmlhttp.open("GET", "deletejob.php?jid=" + jobid , true);
-    xmlhttp.send();
-    }
-    </script> -->
     <title> view Jobs </title>
 </head>
-
 <body>
-
     <div id="nav">
         <nav>
             <div class="collapse navbar-collapse" id="insidenav" style="background-color:#dd4814">
                 <div class="navbar-header">
                     <a class="navbar-brand" style="color: white;">Job Portal</a>
                 </div>
-
                 <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;">
-
                     <li><a style="color: white;" onmouseover="this.style.color='black'"
                             onmouseleave="this.style.color='white'" href="/login">
                             Logout</a></li>
                     </li>
                 </ul>
-
-            </div><!-- /.navbar-collapse -->
+            </div>
         </nav>
-    </div><!-- /.container-fluid -->
-
-
+    </div>
     <div class="container">
         <center>
             <h2>View Job </h2>
@@ -65,7 +35,6 @@
         <div class="page-header" style="background: #f4511e"></div>
         <button class="btn btn-warning" onclick="goBack()"><span
                 class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back to Profile</button>
-
         <% if(job==null) {%>
             <center>
                 <h1 style="color: red; font-weight: bold;">No Jobs Posted</h1>
@@ -140,7 +109,6 @@
                         <%=job.desired_candidate_profile%>
                     </td>
                 </tr>
-
             </table>
             <table class="table">
                 <tr>
@@ -155,10 +123,9 @@
                     </td>
                 </tr>
             </table>
-        </div> <!-- table content -->
+        </div>
         <div class="page-header" />
         <% } %>
-
     </div>
 </body>
 <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
@@ -166,5 +133,4 @@
 <link href="../css/employer.css" rel="stylesheet">
 <script src="../js/jquery-1.12.0.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-
 </html>
