@@ -1,8 +1,8 @@
 # Job Portal
 ## This is a job portal site made as a project for IWP
-### Slot: C2
-### Faculty: Lydia Jane G
-### Vellore Intitute of Technology
+#### Slot: C2
+#### Faculty: Lydia Jane G
+#### Vellore Intitute of Technology
 ### The team mates are:
 - Riya Mathew (20BKT0016)
 - Katkuri Fhanindra Reddy (20BKT0025)
