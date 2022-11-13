@@ -1,3 +1,21 @@
+<!-- <html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Enter New Password</title>
+</head>
+
+<body>
+    <form method="post" action="/reset_pass">
+        <input type="hidden" name="email" value="<%= //email %>">
+        <input type="hidden" name="category" value="<%=// category %>">
+        <input id="pass1" type="password" name="pass1" />
+        <input id="pass2" type="password" name="pass2" />
+        <input id="button" type="submit" name="button" value="Submit" />
+    </form>
+</body>
+
+</html> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forgot Password</title>
+    <title>Signin</title>
 
 </head>
 
@@ -39,17 +57,21 @@
 
 <body>
     <div class="container col-sm-5 pull-right">
-        <form class="form-signin" action="/generate_otp" method="post">
-            <h2 class="form-signin-heading">Please Enter Email</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus
-                name="email">
-                <br>
+        <form class="form-signin" action="/reset_pass" method="post">
+            <h2 class="form-signin-heading">Enter New Password</h2>
+            <label for="inputPassword1" class="sr-only">Password</label>
+            <input type="password" id="inputPassword1" class="form-control" placeholder="New Password" required
+                name="pass1">
+            <label for="inputPassword2" class="sr-only">Password</label>
+            <input type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password" required
+                name="pass2">
             <center>
-                <a href="/login">Go to Login</a>
+                <a href="/login">Go to login</a>
             </center>
-            <br>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Proceed</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+
+            <input type="hidden" name="email" value="<%= email %>">
+            <input type="hidden" name="category" value="<%= category %>">
         </form>
         <% try { %>
             <center>

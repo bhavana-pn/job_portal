@@ -17,13 +17,13 @@
     </script>
 </head>
 <div id="nav">
-    <nav class="emp-nav">
+    <nav class="emp-nav" style="background-color: #f4511e;">
         <div class="navbar" id="insidenav">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Job Portal</a>
+                <a class="navbar-brand" href="#" style="color: white;">Job Portal</a>
             </div>
 
-            <ul class="nav navbar-nav">
+            <!-- <ul class="nav navbar-nav"> -->
                 <!-- <li><a href="#">
                         Company Name<span class="sr-only">(current)</span>
                     </a></li>
@@ -39,7 +39,7 @@
                         <li><a href="#">Manage Applicants</a></li>
                     </ul>
                 </li> -->
-            </ul>
+            <!-- </ul> -->
             <!-- <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
@@ -57,7 +57,8 @@
                         <li><a href="#">Edit Profile</a></li>
                     </ul> -->
                 </li>
-                <li><a href="/login">Logout</a></li>
+                <li><a href="/login" style="color: white;" onmouseover="this.style.color='black'"
+                            onmouseleave="this.style.color='white'">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -65,8 +66,8 @@
 
 <body>
     <h3 style="color: seagreen; margin-top: 50px; " class="text-center">Manage Your Posted Jobs</h3>
-    <div class="page-header" style="background: #f4511e"></div>
     <div class="container" id="viewmain">
+        <div class="page-header" style="background: #f4511e"></div>
         <div class="table-responsive">
             <% if(jobapps.length> 0) { %>
                 <h1>
@@ -143,7 +144,7 @@
                         <div class='alert alert-warning alert-dismissible' role='alert'>
                             <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span
                                     aria-hidden='true'>&times;</span></button>
-                            <p style='font-size: 20px'><strong>Note:</strong> You have'nt posted any jobs yet!</p>
+                            <p style='font-size: 20px'><strong>Note:</strong> No Jobs Posted or No Applicant applied yet!</p>
                         </div>
                         <% } %>
                     </div>

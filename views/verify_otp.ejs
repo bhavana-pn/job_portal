@@ -1,3 +1,22 @@
+<!-- <html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Forgot Password</title>
+</head>
+
+<body>
+    <form method="post" action="/submit_otp">
+        <label> Enter OTP : </label>
+        <input type="hidden" name="otp" value="<%=// otp %>">
+        <input type="hidden" name="email" value="<%=// email %>">
+        <input type="hidden" name="category" value="<%=// category %>">
+        <input id="entered_otp" type="number" name="entered_otp" />
+        <input id="button" type="submit" name="button" value="Submit" />
+    </form>
+</body>
+
+</html> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +32,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Forgot Password</title>
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
 
 </head>
 
@@ -39,17 +65,22 @@
 
 <body>
     <div class="container col-sm-5 pull-right">
-        <form class="form-signin" action="/generate_otp" method="post">
-            <h2 class="form-signin-heading">Please Enter Email</h2>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus
-                name="email">
-                <br>
+        <form class="form-signin" action="/submit_otp" method="post">
+            <h2 class="form-signin-heading">Please Enter OTP</h2>
+            <label for="entered_otp" class="sr-only">OTP: </label>
+            <input type="number" id="entered_otp" class="form-control"
+                placeholder="OTP" required autofocus name="entered_otp">
+            <br>
             <center>
-                <a href="/login">Go to Login</a>
+                <a href="/forget_pass">Use different email</a>
             </center>
             <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Proceed</button>
+
+            <input type="hidden" name="otp" value="<%= otp %>">
+            <input type="hidden" name="email" value="<%= email %>">
+            <input type="hidden" name="category" value="<%= category %>">
+
         </form>
         <% try { %>
             <center>

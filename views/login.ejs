@@ -52,6 +52,11 @@
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
+        <% try { %>
+        <center>
+            <h3 style="color: red;"><%= error %></h3>
+        </center>
+        <% } catch(err) {} %>
     </div>
 
     <div class="col-sm-10">

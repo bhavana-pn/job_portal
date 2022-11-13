@@ -124,6 +124,65 @@ app.get("/forgot_pass", function (req, res) {
   res.render("forgot_pass");
 });
 
+app.post('/submit_otp', function (req, res) {
+  otp = req.body.otp;
+  entered_otp = req.body.entered_otp;
+  console.log('otp: ', otp);
+  console.log('entered_otp: ', entered_otp);
+  category = req.body.category;
+  if (otp == entered_otp) {
+    res.render('reset_pass', { category: category, email: req.body.email });
+  } else {
+    res.render('forgot_pass', { error: 'OTP does not match' });
+  }
+});
+
+app.post('/reset_pass', function (req, res) {
+  if (req.body.pass1 == req.body.pass2) {
+    if (req.body.category == 'user') {
+      User.updateOne({ email: req.body.email }, { password: md5(req.body.pass1) }, function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render('login', { error: 'Password reset successfully' });
+        }
+      });
+    } else {
+      Company.updateOne({ email: req.body.email }, { password: md5(req.body.pass1) }, function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render('login', { error: 'Password reset successfully' });
+        }
+      });
+    }
+  } else {
+    res.render('reset_pass', { error: 'Passwords do not match', category: req.body.category, email: req.body.email });
+  }
+});
+
+app.post('/generate_otp', function (req, res) {
+  Company.findOne({ email: req.body.email }, function (err, company) {
+    if (err) {
+      console.log(err);
+      User.findOne({ email: req.body.email }, function (err, user) {
+        if (err) {
+          console.log(err);
+        } else {
+          var otp = Math.floor(100000 + Math.random() * 900000 - 1);
+          console.log('OTP: ', otp);
+          res.render('verify_otp', {category:'user', email: req.body.email, otp: otp, user: user });
+        }
+      });
+    } else {
+      var otp = Math.floor(100000 + Math.random() * 900000 - 1);
+      console.log('OTP: ', otp);
+      res.render('verify_otp', { category:'user', email: req.body.email, otp: otp });
+    }
+  });
+});
+
+
 app.get('/viewappliedjob/:id', function (req, res) {
   JobApplication.find({ userid: req.params.id }, function (err, jobapp) {
     if (err) {
@@ -316,7 +375,7 @@ app.post("/postjob", function (req, res) {
         } else {
           // log the company
           console.log(company);
-          res.render("postjob", { company: company });
+          res.render("profile", { company: company });
         }
       });
     }
