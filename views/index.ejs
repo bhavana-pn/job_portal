@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Job Portal for Disabled</title>
+    <title>Job Portal</title>
     <link href="/css/home.css" rel="stylesheet">
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
 </head>
@@ -45,6 +45,11 @@
 </nav>
 
 <body id="indexbody" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <% try { %> 
+        <center>
+            <h4 style="color: green;"><%= err %> </h4>
+        </center>
+        <% } catch(err){} %> 
     <div class="bmsTop">
         <ul>
             <li style="font-size: 15px; font-weight: bold">Top Recruiters:</li>
@@ -153,7 +158,7 @@
                 <p><span class="glyphicon glyphicon-envelope"></span> info@jobportal.com</p>
             </div>
 
-            <div class="col-sm-7">
+            <form class="col-sm-7" method="post" action="/contactme">
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
@@ -169,7 +174,7 @@
                         <button class="btn btn-default pull-right" type="submit">Send</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -185,7 +190,6 @@
     </footer>
 </body>
 <script src="/js/jquery-1.12.0.min.js"></script>
-<script src="/js/search.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 
 </html>
